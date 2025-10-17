@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+/* Makes 'Apply' button in dashboard filter blue */
+.dashboard .color-primary {
+  background-color: var(--color-primary, #102F82) !important;
+  color: #fff !important;
+  border: none !important;
+}
+

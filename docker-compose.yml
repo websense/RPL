@@ -1,0 +1,47 @@
+services:
+  webscraper:
+    build: ./WebScraper
+    container_name: WebScraper
+    ports:
+      - 5175:5175
+
+  backend:
+    build: ./flask_api
+    container_name: flask_api
+    ports: 
+      - "5001:5000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/
+      - WEBSCRAPER_URI=http://webscraper:5175
+      - MAIL_SERVER=mailhog
+      - MAIL_PORT=1025
+      - MAIL_DEFAULT_SENDER=RPL@UWA <uwarpl@example.com>
+    depends_on:
+      - mongo
+      - webscraper
+      - mailhog
+  
+  frontend:
+    build: ./react_app
+    container_name: react_app
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  mongo:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+volumes:
+  mongo-data:

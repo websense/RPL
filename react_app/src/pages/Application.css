@@ -1,0 +1,40 @@
+#save, #resume, #start-new{
+	color: var(--color-primary);
+	background: transparent;
+	margin: 0;
+	border: 0;
+	cursor: pointer;
+	transition: color 0.2s;
+	outline: none;
+	padding-left: 0px;
+	padding-right: 0px;
+	justify-self: start;
+}
+
+#save:hover, #resume:hover, #start-new:hover {
+	color: #646cff;
+}
+
+.disabled {
+	pointer-events: none;
+	color: gray !important;
+}
+
+#prev, #decline {
+	background: var(--color-accents);
+}
+
+#next, #submit, #accept {
+	background: var(--color-titles);
+	width: 100px;
+}
+
+#collapse, #delete, #add {
+	background: oklch(86.9% 0.022 252.894);
+}
+
+input {
+	background: var(--color-containers);
+	min-width: 80px;
+}
+

@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+#database td {
+    @apply border p-4 text-left
+}
+
+#database th {
+    @apply p-4 text-left
+}
+
+#database-prev, #database-next {
+    background-color: oklch(86.9% 0.022 252.894);
+}
